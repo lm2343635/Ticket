@@ -12,6 +12,7 @@ public class ScenicBean {
 	private String location;
 	private String description;
 	private Date createDate;
+	private int sold;
 	private boolean enable;
 	private PhotoBean cover;
 	
@@ -79,6 +80,14 @@ public class ScenicBean {
 		this.cover = cover;
 	}
 
+	public int getSold() {
+		return sold;
+	}
+
+	public void setSold(int sold) {
+		this.sold = sold;
+	}
+
 	public ScenicBean(Scenic scenic) {
 		super();
 		this.sid = scenic.getSid();
@@ -88,6 +97,7 @@ public class ScenicBean {
 		this.description = scenic.getDescription();
 		this.createDate = scenic.getCreateDate();
 		this.enable = scenic.getEnable();
+		this.sold = scenic.getSold();
 		this.cover = scenic.getCover()==null? null: new PhotoBean(scenic.getCover());
 	}
 	

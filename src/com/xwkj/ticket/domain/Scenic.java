@@ -15,6 +15,7 @@ public class Scenic implements Serializable {
 	private String description;
 	private Date createDate;
 	private Boolean enable;
+	private Integer sold;
 	private Photo cover;
 	private Set<Photo> photos;
 	
@@ -71,6 +72,12 @@ public class Scenic implements Serializable {
 	}
 	public void setPhotos(Set<Photo> photos) {
 		this.photos = photos;
+	}
+	public Integer getSold() {
+		return sold;
+	}
+	public void setSold(Integer sold) {
+		this.sold = sold;
 	}
 	
 }
