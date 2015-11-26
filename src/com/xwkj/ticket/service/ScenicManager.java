@@ -41,9 +41,10 @@ public interface ScenicManager {
 	
 	/**
 	 * 获取所有景区信息
+	 * @param enable 是否查询可用景点
 	 * @return
 	 */
-	List<ScenicBean> getAll();
+	List<ScenicBean> getAll(boolean enabl);
 	
 	/**
 	 * 设置景区可用性

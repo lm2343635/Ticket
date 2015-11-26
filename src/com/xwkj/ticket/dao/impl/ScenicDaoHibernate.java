@@ -29,8 +29,14 @@ public class ScenicDaoHibernate extends PageHibernateDaoSupport implements Sceni
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Scenic> findAll() {
-		return getHibernateTemplate().find("from Scenic order by createDate desc");
+	public List<Scenic> findAll(boolean enable) {
+		String hql="from Scenic";
+		if(enable) {
+			hql+=" where enable=true";
+		}
+		hql+=" order by createDate desc";
+
+		return getHibernateTemplate().find(hql);
 	}
 
 }

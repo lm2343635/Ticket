@@ -1,0 +1,43 @@
+#scenic-photo-list {
+	margin: 5px 0; 	
+}
+
+#scenic-photo-list img {
+	width: 100%;
+}
+
+#scenic-photo-list .carousel-indicators li {
+	width: 52px;
+    height: 39px;
+    background-size: cover;
+}
+
+#scenic-photo-list .carousel-indicators .active {
+	margin-bottom: 5px;
+}
+
+#scenic-description {
+	background-color: rgba(255,255,255,0);
+    border: none;
+    font-size: 16px;
+    padding: 0;
+}
+
+#booking-scenic .panel-body h3, 
+#booking-scenic .panel-body h4 {
+	text-align: center;
+}
+
+#booking-scenic .panel-body .input-group {
+	margin: 20px 0;
+}
+
+.input-group .form-icon i {
+	width: 20px;
+}
+
+strong {
+	font-size: 26px;
+	margin: 5px;
+	color: #d9534f;
+}

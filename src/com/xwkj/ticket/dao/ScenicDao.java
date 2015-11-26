@@ -10,5 +10,10 @@ public interface ScenicDao {
 	void update(Scenic scenic);
 	void delete(Scenic scenic);
 	
-	List<Scenic> findAll();
+	/**
+	 * 查询景点
+	 * @param enable 是否查询可用景点
+	 * @return
+	 */
+	List<Scenic> findAll(boolean enable);
 }

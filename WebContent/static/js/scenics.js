@@ -104,7 +104,7 @@ $(document).ready(function() {
  * 加载景点
  */
 function loadScenics() {
-	ScenicManager.getAll(function(scenics) {
+	ScenicManager.getAll(false, function(scenics) {
 		$("#scenic-list tbody").mengularClear();
 		for(var i in scenics) {
 			$("#scenic-list tbody").mengular(".scenic-list-template", {
@@ -132,8 +132,105 @@ function loadScenics() {
 						"modify-scenic-price": scenic.price,
 						"modify-scenic-description": scenic.description
 					});
+
+					//加载照片
+					$("#scenic-photo-list").mengularClear();
+					PhotoManager.getPhotosBySid(modifyingSid, function(photos) {
+						for(var i in photos) {
+							$("#scenic-photo-list").mengular(".scenic-photo-template", {
+								pid: photos[i].pid,
+				    			src: "upload/"+modifyingSid+"/"+photos[i].filename
+				    		});		
+
+							//设定封面图片
+							if(scenic.cover!=null) {
+								if(scenic.cover.pid==photos[i].pid) {
+									$("#"+photos[i].pid+" .scenic-photo-cover")
+				    					.removeClass("button-action")
+				    					.addClass("button-primary")
+				    					.text("封面图片");
+								}
+							}
+
+							//绑定删除图片按钮点击事件
+			    			$("#"+photos[i].pid+" .scenic-photo-delete").click(function() {
+			    				var pid=$(this).parent().attr("id");
+			    				PhotoManager.removePhoto(pid, function() {
+			    					$("#"+pid).remove();
+			    				});
+			    			});
+
+			    			//绑定设定图片封面按钮点击事件
+			    			$("#"+photos[i].pid+" .scenic-photo-cover").click(function() {
+			    				var pid=$(this).parent().attr("id");
+			    				PhotoManager.setAsCover(pid, function() {
+			    					$(".scenic-photo-cover").removeClass("button-primary")
+				    					.removeClass("button-action")
+				    					.addClass("button-action")
+				    					.text("设为封面");		
+			    					$("#"+pid+" .scenic-photo-cover")	
+			    						.removeClass("button-action")
+				    					.addClass("button-primary")
+				    					.text("封面图片");
+			    				});
+			    			});
+						}
+					});
+
 					$("#modify-scenic-modal").modal("show");
-				})
+				});
+
+				//上传照片
+				$("#upload-photo").fileupload({
+			    	autoUpload:true,
+			    	url:"PhotoServlet?task=uploadScenicPhoto&sid="+modifyingSid,
+			    	dataType:"json",
+			    	acceptFileTypes: /^image\/(gif|jpeg|png)$/,
+			    	done:function(e,data){
+			    		if(data.result.thumbnail==false) {
+			    			$.messager.popup("图片尺寸过小，不允许上传！");
+			    			return;
+			    		}
+
+			     		$("#scenic-photo-list").mengular(".scenic-photo-template", {
+			     			pid: data.result.pid,
+			     			src: "upload/"+modifyingSid+"/"+data.result.filename
+			     		});
+
+						//绑定删除图片按钮点击事件
+		    			$("#"+data.result.pid+" .scenic-photo-delete").click(function() {
+		    				var pid=$(this).parent().attr("id");
+		    				PhotoManager.removePhoto(pid, function() {
+		    					$("#"+pid).remove();
+		    				});
+		    			});
+
+		    			//绑定设定图片封面按钮点击事件
+		    			$("#"+data.result.pid+" .scenic-photo-cover").click(function() {
+		    				var pid=$(this).parent().attr("id");
+		    				PhotoManager.setAsCover(pid, function() {
+		    					$(".scenic-photo-cover").removeClass("button-primary")
+			    					.removeClass("button-action")
+			    					.addClass("button-action")
+			    					.text("设为封面");		
+		    					$("#"+pid+" .scenic-photo-cover")	
+		    						.removeClass("button-action")
+			    					.addClass("button-primary")
+			    					.text("封面图片");
+		    				});
+		    			});
+
+			     		setTimeout(function(){
+						 	$("#upload-photo-progress").hide(1500);
+						},2000);
+			    	},
+			    	progressall:function(e,data){
+						$("#upload-photo-progress").show();
+					    var progress=parseInt(data.loaded/data.total*100, 10);
+					    $("#upload-photo-progress .progress-bar").css("width",progress+"%");
+					    $("#upload-photo-progress .progress-bar").text(progress+"%");
+			    	}
+				});
 			});
 
 			//删除景点

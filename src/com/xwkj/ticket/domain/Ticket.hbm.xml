@@ -7,7 +7,7 @@
 		<id name="tid" type="string">
 			<generator class="uuid"/>
 		</id>
-		<property name="tno" type="string" not-null="true"/>
+		<property name="tno" type="string" not-null="true" unique="true"/>
 		<property name="password" type="string" not-null="true"/>
 		<property name="price" type="double" not-null="true"/>
 		<property name="count" type="integer" not-null="true"/>

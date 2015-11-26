@@ -27,34 +27,11 @@ public class MailService
 	private String smtpServer;
 	private String username;
 	private String password;
+	
 	private String subject;
 	private String content;
 	List<String> attachments=new ArrayList<String>();
 	
-	public String getTo() {
-		return to;
-	}
-	public String getFrom() {
-		return from;
-	}
-	public String getSmtpServer() {
-		return smtpServer;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public String getSubject() {
-		return subject;
-	}
-	public String getContent() {
-		return content;
-	}
-	public List<String> getAttachments() {
-		return attachments;
-	}
 	public void setTo(String to) {
 		this.to = to;
 	}
@@ -77,24 +54,6 @@ public class MailService
 		this.content = content;
 	}
 	public void setAttachments(List<String> attachments) {
-		this.attachments = attachments;
-	}
-	
-	public MailService() {
-		super();
-	}
-	
-	public MailService(String to, String from, String smtpServer,
-			String username, String password, String subject, String content,
-			List<String> attachments) {
-		super();
-		this.to = to;
-		this.from = from;
-		this.smtpServer = smtpServer;
-		this.username = username;
-		this.password = password;
-		this.subject = subject;
-		this.content = content;
 		this.attachments = attachments;
 	}
 	

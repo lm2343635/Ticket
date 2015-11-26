@@ -5,3 +5,23 @@
 .form-icon i {
 	width: 20px;
 }
+
+.scenic-photo-delete {
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.scenic-photo-cover {
+    position: absolute;
+    margin-left: 40px;
+    margin-top: 5px;
+}
+
+#upload-photo-button {
+	width: 100%
+}
+
+#upload-photo-progress {
+	display: none;
+}
