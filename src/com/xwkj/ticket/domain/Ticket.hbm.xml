@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xwkj.ticket.domain">
+	<class name="Ticket" table="ticket">
+		<id name="tid" type="string">
+			<generator class="uuid"/>
+		</id>
+		<property name="tno" type="string" not-null="true"/>
+		<property name="password" type="string" not-null="true"/>
+		<property name="price" type="double" not-null="true"/>
+		<property name="count" type="integer" not-null="true"/>
+		<property name="amount" type="double" not-null="true"/>
+		<property name="date" type="date" not-null="true"/>	
+		<property name="createDate" type="java.util.Date" not-null="true"/>	
+		<property name="name" type="string" not-null="true"/>
+		<property name="telephone" type="string" not-null="true"/>
+		<property name="email" type="text"/>
+		<property name="pay"  type="boolean" not-null="true"/>
+		<property name="payDate" type="java.util.Date"/>	
+		<many-to-one name="scenic" column="sid" class="Scenic"  lazy="false"/>
+	</class>
+</hibernate-mapping>

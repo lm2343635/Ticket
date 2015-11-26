@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xwkj.ticket.domain">
+	<class name="Photo" table="photo">
+		<id name="pid" type="string">
+			<generator class="uuid"/>
+		</id>
+		<property name="filename" type="string" not-null="true"/>
+		<property name="upload"  type="java.util.Date" not-null="true"/>
+		<many-to-one name="scenic" column="sid" class="Scenic" cascade="save-update" not-null="true" lazy="false"/>
+	</class>
+</hibernate-mapping>

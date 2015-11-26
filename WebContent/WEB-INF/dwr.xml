@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC 
+	"-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN"
+	"http://getahead.org/dwr/dwr30.dtd">
+<dwr>
+	<allow>
+		<create creator="spring" javascript="PhotoManager"> 
+			<param name="beanName" value="photoManager"/>
+		</create>
+		<create creator="spring" javascript="ScenicManager"> 
+			<param name="beanName" value="scenicManager"/>
+		</create>
+		<create creator="spring" javascript="TicketManager"> 
+			<param name="beanName" value="ticketManager"/>
+		</create>
+		<create creator="spring" javascript="AdminManager"> 
+			<param name="beanName" value="adminManager"/>
+		</create>
+		<!-- 定义使用Bean转换器处理如下Java类 -->
+		<convert converter="bean" match="com.xwkj.ticket.bean.TicketBean"/> 
+		<convert converter="bean" match="com.xwkj.ticket.bean.PhotoBean"/> 
+		<convert converter="bean" match="com.xwkj.ticket.bean.ScenicBean"/> 
+	</allow>
+</dwr>
