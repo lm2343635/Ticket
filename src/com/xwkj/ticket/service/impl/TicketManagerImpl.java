@@ -1,6 +1,8 @@
 package com.xwkj.ticket.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.directwebremoting.WebContextFactory;
 import org.springframework.web.context.WebApplicationContext;
@@ -118,6 +120,16 @@ public class TicketManagerImpl extends ManagerTemplate implements TicketManager 
 		if(ticket==null)
 			return null;
 		return new TicketBean(ticket);
+	}
+
+	@Override
+	public List<TicketBean> searchPayedTickets(String date, String tno, String telephone, String sid) {
+		List<TicketBean> tickets=new ArrayList<>();
+		Scenic scenic=scenicDao.get(sid);
+		for(Ticket ticket: ticketDao.findPayed(DateTool.transferDate(date, DateTool.YEAR_MONTH_DATE_FORMAT), tno, telephone, scenic)) {
+			tickets.add(new TicketBean(ticket));
+		}
+		return tickets;
 	}
 
 }

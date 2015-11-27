@@ -1,5 +1,7 @@
 package com.xwkj.ticket.service;
 
+import java.util.List;
+
 import com.xwkj.ticket.bean.TicketBean;
 
 public interface TicketManager {
@@ -37,4 +39,14 @@ public interface TicketManager {
 	 * @return
 	 */
 	TicketBean getTicketByTno(String tno);
+	
+	/**
+	 * 查找已付款的门票订单
+	 * @param date
+	 * @param tno
+	 * @param telephone
+	 * @param sid
+	 * @return
+	 */
+	List<TicketBean> searchPayedTickets(String date, String tno, String telephone, String sid);
 }
