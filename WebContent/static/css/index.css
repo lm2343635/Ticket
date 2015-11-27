@@ -1,0 +1,13 @@
+#search-ticket-tno {
+	border: 0;
+    font-size: 25px;
+    width: 100%;
+    outline: none;
+    background: rgba(255,255,255,0.4);
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+#search-ticket .row div {
+	margin: 5px 0;
+}

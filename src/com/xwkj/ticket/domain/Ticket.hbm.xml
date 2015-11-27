@@ -18,6 +18,7 @@
 		<property name="telephone" type="string" not-null="true"/>
 		<property name="email" type="text"/>
 		<property name="pay"  type="boolean" not-null="true"/>
+		<property name="timeout"  type="boolean" not-null="true"/>
 		<property name="payDate" type="java.util.Date"/>	
 		<many-to-one name="scenic" column="sid" class="Scenic"  lazy="false"/>
 	</class>

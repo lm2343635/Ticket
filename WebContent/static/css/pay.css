@@ -1,0 +1,25 @@
+#ticket-cover {
+	width: 100%
+}
+
+#alipay-logo {
+	height: 50px;
+}
+
+.order-payed, 
+.order-wait, 
+.order-close {
+    float: right;
+    display: none;
+    margin: 5px;
+}
+
+.order-payed i, 
+.order-wait i, 
+.order-close i {
+	font-size: 70px;
+}
+    
+#pay-panel {
+	display: none;
+}

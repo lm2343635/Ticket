@@ -133,7 +133,7 @@ public class AlipaySubmit {
      * @param strButtonName 确认按钮显示文字
      * @return 提交表单HTML文本
      */
-    public Map<String, Object> buildRequest(int it_b_pay, String out_trade_no, String subject, double total_fee, String body) {
+    public Map<String, Object> buildRequest(int it_b_pay, String out_trade_no, String subject, double total_fee, String body, String sid) {
 		//把请求参数打包成数组
 		Map<String, String> sParaTemp = new HashMap<String, String>();
 		sParaTemp.put("service", "create_direct_pay_by_user");
@@ -147,7 +147,7 @@ public class AlipaySubmit {
 		sParaTemp.put("subject", subject);
 		sParaTemp.put("total_fee", String.valueOf(total_fee));
 		sParaTemp.put("body", body);
-		sParaTemp.put("show_url", show_url);
+		sParaTemp.put("show_url", show_url+sid);
 		sParaTemp.put("anti_phishing_key", anti_phishing_key);
 		sParaTemp.put("exter_invoke_ip", exter_invoke_ip);
 		sParaTemp.put("it_b_pay", it_b_pay+"m"); //支付超时

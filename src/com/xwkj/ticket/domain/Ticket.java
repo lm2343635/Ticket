@@ -19,6 +19,7 @@ public class Ticket implements Serializable {
 	private String telephone;
 	private String email;
 	private Boolean pay;
+	private Boolean timeout;
 	private Date payDate;
 	private Scenic scenic;
 	
@@ -105,6 +106,12 @@ public class Ticket implements Serializable {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public Boolean getTimeout() {
+		return timeout;
+	}
+	public void setTimeout(Boolean timeout) {
+		this.timeout = timeout;
 	}
 
 }

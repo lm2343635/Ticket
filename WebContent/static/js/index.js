@@ -21,5 +21,17 @@ $(document).ready(function() {
 		}
 
 	});
+
+	//搜索订单
+	$("#search-ticket-submit").click(function() {
+		var tno=$("#search-ticket-tno").val();
+		TicketManager.getTicketByTno(tno, function(ticket) {
+			if(ticket==null) {
+				$.messager.popup("不存在该订单，请确认订单号无误");
+				return;
+			}
+			location.href="pay.html?tno"+tno;
+		});
+	});
 	
 });

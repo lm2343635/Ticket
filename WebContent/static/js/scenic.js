@@ -128,6 +128,7 @@ $(document).ready(function() {
 				+"</strong>，<br>电话号码是<strong>"+telephone
 				+"</strong>，<br>电子邮箱是<strong>"+(email==""? "未填写": email)+"</strong>。</p>";
 			$.messager.confirm("请再次确认您的预定日期、数量、姓名和联系方式", message, function() {
+				$.messager.popup("正在生成订单");
 				TicketManager.orderTicket(sid, count, date, name, telephone, email, function(tno) {
 					location.href="pay.html?tno="+tno;
 				});

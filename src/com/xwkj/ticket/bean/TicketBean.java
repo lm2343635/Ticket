@@ -18,8 +18,10 @@ public class TicketBean {
 	private String telephone;
 	private String email;
 	private boolean pay;
+	private boolean timeout;
 	private Date payDate;
-	private String sid;
+	private ScenicBean scenic;
+	
 	public String getTid() {
 		return tid;
 	}
@@ -98,11 +100,17 @@ public class TicketBean {
 	public void setPayDate(Date payDate) {
 		this.payDate = payDate;
 	}
-	public String getSid() {
-		return sid;
+	public ScenicBean getScenic() {
+		return scenic;
 	}
-	public void setSid(String sid) {
-		this.sid = sid;
+	public void setScenic(ScenicBean scenic) {
+		this.scenic = scenic;
+	}
+	public boolean isTimeout() {
+		return timeout;
+	}
+	public void setTimeout(boolean timeout) {
+		this.timeout = timeout;
 	}
 	
 	public TicketBean(Ticket ticket) {
@@ -119,8 +127,9 @@ public class TicketBean {
 		this.telephone = ticket.getTelephone();
 		this.email = ticket.getEmail();
 		this.pay = ticket.getPay();
+		this.timeout = ticket.getTimeout();
 		this.payDate = ticket.getPayDate();
-		this.sid = ticket.getScenic().getSid();
+		this.scenic = new ScenicBean(ticket.getScenic());
 	}
 	
 }

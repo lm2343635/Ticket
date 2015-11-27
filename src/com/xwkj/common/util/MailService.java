@@ -22,12 +22,12 @@ import javax.mail.internet.MimeUtility;
 
 public class MailService 
 {
-	private String to;
-	private String from;
 	private String smtpServer;
+	private String from;
 	private String username;
 	private String password;
 	
+	private String to;
 	private String subject;
 	private String content;
 	List<String> attachments=new ArrayList<String>();
@@ -136,6 +136,22 @@ public class MailService
             return false;
         }
         return true;
+    }
+    
+    /**
+     * 用形如#para1#=value1&#para2=value2#的参数字符串替换元内容中的参数
+     * @param str
+     * @param values
+     * @return
+     */
+    public static String replaceWithParameters(String str, String values) {
+    	String replaceStr=str;
+    	String [] parameters=values.split("&");
+    	for(String parameter: parameters) {
+    		String [] keyValue=parameter.split("=");
+    		replaceStr=replaceStr.replace(keyValue[0], keyValue[1]);
+    	}
+    	return replaceStr;
     }
     
 }
