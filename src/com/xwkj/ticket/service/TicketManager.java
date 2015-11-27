@@ -49,4 +49,11 @@ public interface TicketManager {
 	 * @return
 	 */
 	List<TicketBean> searchPayedTickets(String date, String tno, String telephone, String sid);
+
+	/**
+	 * 确认领票
+	 * @param tid
+	 * @param checkin
+	 */
+	void setCheckin(String tid, boolean checkin);
 }

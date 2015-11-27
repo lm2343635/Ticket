@@ -21,6 +21,7 @@ public class Ticket implements Serializable {
 	private Boolean pay;
 	private Boolean timeout;
 	private Date payDate;
+	private Boolean checkin;
 	private Scenic scenic;
 	
 	public String getTid() {
@@ -112,6 +113,12 @@ public class Ticket implements Serializable {
 	}
 	public void setTimeout(Boolean timeout) {
 		this.timeout = timeout;
+	}
+	public Boolean getCheckin() {
+		return checkin;
+	}
+	public void setCheckin(Boolean checkin) {
+		this.checkin = checkin;
 	}
 
 }

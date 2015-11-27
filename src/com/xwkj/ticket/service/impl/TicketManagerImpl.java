@@ -86,6 +86,7 @@ public class TicketManagerImpl extends ManagerTemplate implements TicketManager 
 		ticket.setEmail(email);
 		ticket.setPay(false);
 		ticket.setTimeout(false);
+		ticket.setCheckin(false);
 		ticket.setScenic(scenic);
 		ticketDao.save(ticket);
 		//准备发邮件和短信提醒用户已下单
@@ -130,6 +131,13 @@ public class TicketManagerImpl extends ManagerTemplate implements TicketManager 
 			tickets.add(new TicketBean(ticket));
 		}
 		return tickets;
+	}
+
+	@Override
+	public void setCheckin(String tid, boolean checkin) {
+		Ticket ticket=ticketDao.get(tid);
+		ticket.setCheckin(checkin);
+		ticketDao.update(ticket);
 	}
 
 }

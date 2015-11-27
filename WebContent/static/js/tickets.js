@@ -58,6 +58,14 @@ function searchTickets(date, tno, telephone, sid) {
 				email: tickets[i].email,
 				password: tickets[i].password
 			});
+
+			//是否领票
+			$("#"+tickets[i].tid+" .ticket-list-checkin input").bootstrapSwitch({
+				state: tickets[i].checkin
+			}).on('switchChange.bootstrapSwitch', function(event, state) {
+				var tid=$(this).parent().parent().parent().parent().attr("id");
+				TicketManager.setCheckin(tid, state);
+			});
 		}		
 	});
 }

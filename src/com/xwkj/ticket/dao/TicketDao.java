@@ -28,4 +28,11 @@ public interface TicketDao {
 	 * @return
 	 */
 	List<Ticket> findPayed(Date date, String tno, String telephone, Scenic scenic);
+	
+	/**
+	 * 查询即将过期的订单
+	 * @param time
+	 * @return
+	 */
+	List<Ticket> findWillTimeout(Date time);
 }

@@ -20,6 +20,7 @@ public class TicketBean {
 	private boolean pay;
 	private boolean timeout;
 	private Date payDate;
+	private boolean checkin;
 	private ScenicBean scenic;
 	
 	public String getTid() {
@@ -112,6 +113,12 @@ public class TicketBean {
 	public void setTimeout(boolean timeout) {
 		this.timeout = timeout;
 	}
+	public boolean isCheckin() {
+		return checkin;
+	}
+	public void setCheckin(boolean checkin) {
+		this.checkin = checkin;
+	}
 	
 	public TicketBean(Ticket ticket) {
 		super();
@@ -129,6 +136,7 @@ public class TicketBean {
 		this.pay = ticket.getPay();
 		this.timeout = ticket.getTimeout();
 		this.payDate = ticket.getPayDate();
+		this.checkin = ticket.getCheckin();
 		this.scenic = new ScenicBean(ticket.getScenic());
 	}
 	

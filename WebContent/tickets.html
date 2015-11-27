@@ -7,6 +7,7 @@
         <title>订单管理</title>
         <link href="static/images/favicon.ico" type="image/x-icon" rel="icon"> 
         <link href="static/css/bootstrap.min.css" rel="stylesheet">
+        <link href="static/css/bootstrap-switch.min.css" rel="stylesheet">
         <link href="static/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
         <link href="static/css/font-awesome.min.css" rel="stylesheet">
         <link href="static/css/mengular.css" rel="stylesheet">
@@ -20,6 +21,7 @@
         <script src="static/js/jquery.min.js"></script>
         <script src="static/js/bootstrap.min.js"></script>
         <script src="static/js/jquery.bootstrap.min.js"></script>
+        <script src="static/js/bootstrap-switch.min.js"></script>
         <script src="static/js/bootstrap-datetimepicker.min.js"></script>
         <script src="static/js/bootstrap-datetimepicker.zh-CN.js"></script>
         <script src="static/js/mengular-2.0.js"></script>
@@ -107,6 +109,7 @@
                             <th>联系电话</th>
                             <th>电子邮箱</th>
                             <th>验证密码</th>
+                            <th>是否领票</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -121,6 +124,7 @@
                             <td>${telephone}$</td>
                             <td>${email}$</td>
                             <td>${password}$</td>
+                            <td class="ticket-list-checkin"><input type="checkbox" data-size="mini" data-on-text="是" data-off-text="否"></td>
                         </tr>
                     </tbody>
                 </table>

@@ -67,4 +67,11 @@ public class TicketDaoHibernate extends PageHibernateDaoSupport implements Ticke
 		return getHibernateTemplate().find(hql, objs);
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Ticket> findWillTimeout(Date time) {
+		String hql="from Ticket where pay=false and timeout=false and createDate<=?";
+		return getHibernateTemplate().find(hql, time);
+	}
+
 }

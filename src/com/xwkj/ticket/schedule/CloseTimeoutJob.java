@@ -1,21 +1,23 @@
-package com.xwkj.booking.schedule;
+package com.xwkj.ticket.schedule;
+
+import java.util.Date;
 
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
+import com.xwkj.common.util.DateTool;
 import com.xwkj.ticket.dao.TicketDao;
 import com.xwkj.ticket.domain.Ticket;
 import com.xwkj.ticket.service.TicketManager;
-import com.xwkj.ticket.service.util.ManagerTemplate;
 
 public class CloseTimeoutJob extends QuartzJobBean {
 	
-	private ManagerTemplate managerTemplate;
+	private TicketDao ticketDao;
 	private TicketManager ticketManager;
 
-	public void setManagerTemplate(ManagerTemplate managerTemplate) {
-		this.managerTemplate = managerTemplate;
+	public void setTicketDao(TicketDao ticketDao) {
+		this.ticketDao = ticketDao;
 	}
 
 	public void setTicketManager(TicketManager ticketManager) {
@@ -24,8 +26,12 @@ public class CloseTimeoutJob extends QuartzJobBean {
 
 	@Override
 	protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
-		TicketDao ticketDao=managerTemplate.getTicketDao();
-
+		Date time=DateTool.nextMinute(new Date(), -ticketManager.getPayTimeOut());
+		for(Ticket ticket: ticketDao.findWillTimeout(time)) {
+			System.out.println(ticket.getTno()+" created at "+ticket.getCreateDate()+" is timeout.");
+			ticket.setTimeout(true);
+			ticketDao.update(ticket);
+		}
 	}
 
 }

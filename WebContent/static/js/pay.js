@@ -33,7 +33,7 @@ $(document).ready(function() {
 			$("#pay-panel a").attr("href", "AlipayServlet?task=pay&tno="+tno);
 		} else if(!ticket.pay&&ticket.timeout) {
 			$("#pay-info").addClass("alert-danger");
-			$("#pay-info .order-cloase").show();
+			$("#pay-info .order-close").show();
 		}
 	});
 

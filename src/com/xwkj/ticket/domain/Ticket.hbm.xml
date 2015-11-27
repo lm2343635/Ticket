@@ -20,6 +20,7 @@
 		<property name="pay"  type="boolean" not-null="true"/>
 		<property name="timeout"  type="boolean" not-null="true"/>
 		<property name="payDate" type="java.util.Date"/>	
+		<property name="checkin"  type="boolean" not-null="true"/>
 		<many-to-one name="scenic" column="sid" class="Scenic"  lazy="false"/>
 	</class>
 </hibernate-mapping>

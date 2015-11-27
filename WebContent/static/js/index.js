@@ -30,7 +30,7 @@ $(document).ready(function() {
 				$.messager.popup("不存在该订单，请确认订单号无误");
 				return;
 			}
-			location.href="pay.html?tno"+tno;
+			location.href="pay.html?tno="+tno;
 		});
 	});
 	
