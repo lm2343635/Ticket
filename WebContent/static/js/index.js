@@ -4,7 +4,7 @@ $(document).ready(function() {
 	$("#foot").load("foot.html");
 
 	//加载景点
-	ScenicManager.getAll(false, function(scenics) {
+	ScenicManager.getAll(true, function(scenics) {
 		for(var i in scenics) {
 			var src="static/images/noImage.jpg";
 			if(scenics[i].cover!=null) {

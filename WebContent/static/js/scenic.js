@@ -17,36 +17,17 @@ $(document).ready(function() {
 	$("#head").load("head.html");
 	$("#foot").load("foot.html");
 
-	$("#booking-scenic-date").datetimepicker({
-        format: 'yyyy-mm-dd',
-        weekcheckin: 1,
-        todayBtn:  1,
-		autoclose: 1,
-		todayHighlight: 1,
-		checkinView: 2,
-		minView: 2,
-		forceParse: 0,
-        showMeridian: 1,
-        language: 'zh-CN'
-    }).change(function() {
-		var date=$(this).val();
-		if(date!=""&&date!=null) {
-			if(getDaysBetweenDates(new Date((new Date().format(YEAR_MONTH_DATE_FORMAT))), new Date(date))<1) {
-				$(this).parent().addClass("has-error");
-				$.messager.popup("预定日期必须在今日以后！");
-				$(this).val("");
-				return;
-			} else {
-				$(this).parent().removeClass("has-error");
-			}
-		}
-	});
-
 	ScenicManager.getScenic(sid, function(scenic) {
-		if(scenic==null) {
-			location.href="urlError.html";
-			return;
-		}
+		
+		AdminManager.checkSession(function(username) {
+			if(username==null) {
+				if(scenic==null||!scenic.enable) {
+					location.href="urlError.html";
+					return;
+				}
+			} 
+		});
+		
 
 		_scenic=scenic;
 
@@ -86,6 +67,31 @@ $(document).ready(function() {
 			
 			$("#scenic-photo-list .mengular-template").remove();
 		});
+	});
+
+	$("#booking-scenic-date").datetimepicker({
+        format: 'yyyy-mm-dd',
+        weekcheckin: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		checkinView: 2,
+		minView: 2,
+		forceParse: 0,
+        showMeridian: 1,
+        language: 'zh-CN'
+    }).change(function() {
+		var date=$(this).val();
+		if(date!=""&&date!=null) {
+			if(getDaysBetweenDates(new Date((new Date().format(YEAR_MONTH_DATE_FORMAT))), new Date(date))<1) {
+				$(this).parent().addClass("has-error");
+				$.messager.popup("预定日期必须在今日以后！");
+				$(this).val("");
+				return;
+			} else {
+				$(this).parent().removeClass("has-error");
+			}
+		}
 	});
 
 	//预定门票
