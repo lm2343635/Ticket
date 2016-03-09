@@ -58,7 +58,8 @@ public class AlipayServlet extends HttpServlet {
 		int minutes=ticketManager.getPayTimeOut()-DateTool.minutesBetween(ticket.getCreateDate(), new Date());
 		//建立请求
 		Map<String, Object> data= alipaySubmit.buildRequest(minutes, ticket.getTno(), ticket.getScenic().getSname(), ticket.getAmount(), body, ticket.getScenic().getSid());
-		System.out.println(data.get("sbHtml"));
+		ticket.setPayWay("alipay");
+		manager.getTicketDao().update(ticket);
 		//跳转页面
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html");  

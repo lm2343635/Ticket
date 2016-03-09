@@ -12,7 +12,6 @@ $(document).ready(function() {
 
 	//加载微信支付code
 	WeChatPayManager.createNative(tno, function(data) {
-		console.log(data);
 		if(data.codeUrl==null) {
 			$.messager.alert("提示", "该订单已超时或已被支付，请求支付二维码失败！");
 			return;

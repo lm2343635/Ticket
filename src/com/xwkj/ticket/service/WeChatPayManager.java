@@ -29,5 +29,5 @@ public interface WeChatPayManager {
 	 * @return code_url
 	 * @throws IOException
 	 */
-	Map<String, Object>  createNative(String oid) throws IOException;
+	Map<String, Object>  createNative(String tno) throws IOException;
 }
