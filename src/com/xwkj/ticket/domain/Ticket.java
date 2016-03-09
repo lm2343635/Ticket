@@ -19,6 +19,8 @@ public class Ticket implements Serializable {
 	private String telephone;
 	private String email;
 	private Boolean pay;
+	private String payWay;
+	private String wechatNonce;
 	private Boolean timeout;
 	private Date payDate;
 	private Boolean checkin;
@@ -119,6 +121,18 @@ public class Ticket implements Serializable {
 	}
 	public void setCheckin(Boolean checkin) {
 		this.checkin = checkin;
+	}
+	public String getPayWay() {
+		return payWay;
+	}
+	public String getWechatNonce() {
+		return wechatNonce;
+	}
+	public void setPayWay(String payWay) {
+		this.payWay = payWay;
+	}
+	public void setWechatNonce(String wechatNonce) {
+		this.wechatNonce = wechatNonce;
 	}
 
 }

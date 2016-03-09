@@ -18,6 +18,8 @@ public class TicketBean {
 	private String telephone;
 	private String email;
 	private boolean pay;
+	private String payWay;
+	private String wechatNonce;
 	private boolean timeout;
 	private Date payDate;
 	private boolean checkin;
@@ -120,6 +122,18 @@ public class TicketBean {
 		this.checkin = checkin;
 	}
 	
+	public String getPayWay() {
+		return payWay;
+	}
+	public String getWechatNonce() {
+		return wechatNonce;
+	}
+	public void setPayWay(String payWay) {
+		this.payWay = payWay;
+	}
+	public void setWechatNonce(String wechatNonce) {
+		this.wechatNonce = wechatNonce;
+	}
 	public TicketBean(Ticket ticket) {
 		super();
 		this.tid = ticket.getTid();
@@ -134,6 +148,8 @@ public class TicketBean {
 		this.telephone = ticket.getTelephone();
 		this.email = ticket.getEmail();
 		this.pay = ticket.getPay();
+		this.payWay=ticket.getPayWay();
+		this.wechatNonce=ticket.getWechatNonce();
 		this.timeout = ticket.getTimeout();
 		this.payDate = ticket.getPayDate();
 		this.checkin = ticket.getCheckin();

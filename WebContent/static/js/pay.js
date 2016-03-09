@@ -30,7 +30,8 @@ $(document).ready(function() {
 			$("#pay-info").addClass("alert-warning");
 			$("#pay-info .order-wait").show();
 			$("#pay-panel").show();
-			$("#pay-panel a").attr("href", "AlipayServlet?task=pay&tno="+tno);
+			$("#alipay-submit").attr("href", "AlipayServlet?task=pay&tno="+tno);
+			$("#wechat-submit").attr("href", "wechatNativePay.html?tno="+tno);
 		} else if(!ticket.pay&&ticket.timeout) {
 			$("#pay-info").addClass("alert-danger");
 			$("#pay-info .order-close").show();

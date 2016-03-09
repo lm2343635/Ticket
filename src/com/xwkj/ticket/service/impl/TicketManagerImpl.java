@@ -140,4 +140,12 @@ public class TicketManagerImpl extends ManagerTemplate implements TicketManager 
 		ticketDao.update(ticket);
 	}
 
+	@Override
+	public boolean checkPayState(String tno) {
+		Ticket ticket=ticketDao.findByTno(tno);
+		if(ticket==null)
+			return false;
+		return ticket.getPay();
+	}
+
 }

@@ -2,7 +2,8 @@
 	width: 100%
 }
 
-#alipay-logo {
+#alipay-logo,
+#wechat-logo {
 	height: 50px;
 }
 
@@ -22,4 +23,9 @@
     
 #pay-panel {
 	display: none;
+}
+
+#pay-panel img,
+#pay-panel  a{
+	margin: 5px;
 }

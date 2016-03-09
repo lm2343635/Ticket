@@ -43,11 +43,11 @@ public class AlipayPayedServlet extends HttpServlet {
 			ticket.setPay(true);
 			ticket.setPayDate(new Date());
 			manager.getTicketDao().update(ticket);
-			//支付成功后、房间的销售数量加1
+			//支付成功后销售数量加1
 			Scenic scenic=ticket.getScenic();
 			scenic.setSold(scenic.getSold()+ticket.getCount());
 			manager.getScenicDao().update(scenic);
-			//准备发邮件和短信提醒用户已下单
+			//准备发邮件和短信提醒用户已支付
 			String value="#tno#="+ticket.getTno()+"&#date#="+DateTool.formatDate(ticket.getDate(), DateTool.YEAR_MONTH_DATE_FORMAT_CN)
 				+"&#password#="+ticket.getPassword()+"&#sname#="+scenic.getSname()+"&#location#="+scenic.getLocation()+"&#count#="+ticket.getCount();
 			//发送短息通知用户支付成功

@@ -18,6 +18,8 @@
 		<property name="telephone" type="string" not-null="true"/>
 		<property name="email" type="text"/>
 		<property name="pay"  type="boolean" not-null="true"/>
+		<property name="payWay" type="string"/>
+		<property name="wechatNonce" type="string"/>
 		<property name="timeout"  type="boolean" not-null="true"/>
 		<property name="payDate" type="java.util.Date"/>	
 		<property name="checkin"  type="boolean" not-null="true"/>

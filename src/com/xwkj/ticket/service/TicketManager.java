@@ -56,4 +56,11 @@ public interface TicketManager {
 	 * @param checkin
 	 */
 	void setCheckin(String tid, boolean checkin);
+	
+	/**
+	 * 检查支付状态
+	 * @param tno
+	 * @return
+	 */
+	boolean checkPayState(String tno);
 }
