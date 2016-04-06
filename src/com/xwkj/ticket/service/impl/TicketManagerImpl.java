@@ -21,51 +21,35 @@ import com.xwkj.ticket.service.util.ManagerTemplate;
 public class TicketManagerImpl extends ManagerTemplate implements TicketManager {
 	//支付超时时长
 	private int payTimeOut;
-	private int createSMSTemplate;
-	private int paySMSTemplate;
+	private String createSMSTemplate;
+	private String paySMSTemplate;
 	private String adminTelephone;
 	private String mailSubject;
 	private String createMail;
 	private String payMail;
-	
-	public void setPayTimeOut(int payTimeOut) {
-		this.payTimeOut = payTimeOut;
-	}
-
-	public void setCreateSMSTemplate(int createSMSTemplate) {
-		this.createSMSTemplate = createSMSTemplate;
-	}
-
-	public void setPaySMSTemplate(int paySMSTemplate) {
-		this.paySMSTemplate = paySMSTemplate;
-	}
-
-	public void setMailSubject(String mailSubject) {
-		this.mailSubject = mailSubject;
-	}
-
-	public void setCreateMail(String createMail) {
-		this.createMail = createMail;
-	}
-
-	public void setPayMail(String payMail) {
-		this.payMail = payMail;
-	}
 
 	public int getPayTimeOut() {
 		return payTimeOut;
 	}
 
-	public int getPaySMSTemplate() {
+	public void setPayTimeOut(int payTimeOut) {
+		this.payTimeOut = payTimeOut;
+	}
+
+	public String getCreateSMSTemplate() {
+		return createSMSTemplate;
+	}
+
+	public void setCreateSMSTemplate(String createSMSTemplate) {
+		this.createSMSTemplate = createSMSTemplate;
+	}
+
+	public String getPaySMSTemplate() {
 		return paySMSTemplate;
 	}
 
-	public String getMailSubject() {
-		return mailSubject;
-	}
-
-	public String getPayMail() {
-		return payMail;
+	public void setPaySMSTemplate(String paySMSTemplate) {
+		this.paySMSTemplate = paySMSTemplate;
 	}
 
 	public String getAdminTelephone() {
@@ -74,6 +58,30 @@ public class TicketManagerImpl extends ManagerTemplate implements TicketManager 
 
 	public void setAdminTelephone(String adminTelephone) {
 		this.adminTelephone = adminTelephone;
+	}
+
+	public String getMailSubject() {
+		return mailSubject;
+	}
+
+	public void setMailSubject(String mailSubject) {
+		this.mailSubject = mailSubject;
+	}
+
+	public String getCreateMail() {
+		return createMail;
+	}
+
+	public void setCreateMail(String createMail) {
+		this.createMail = createMail;
+	}
+
+	public String getPayMail() {
+		return payMail;
+	}
+
+	public void setPayMail(String payMail) {
+		this.payMail = payMail;
 	}
 
 	@Override

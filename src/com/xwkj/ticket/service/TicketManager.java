@@ -8,7 +8,7 @@ public interface TicketManager {
 	
 	int getPayTimeOut();
 	
-	int getPaySMSTemplate();
+	String getPaySMSTemplate();
 	
 	String getMailSubject();
 

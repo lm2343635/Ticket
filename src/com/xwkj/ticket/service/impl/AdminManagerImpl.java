@@ -8,8 +8,7 @@ import com.xwkj.ticket.service.util.ManagerTemplate;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-public class AdminManagerImpl extends ManagerTemplate implements AdminManager
-{
+public class AdminManagerImpl extends ManagerTemplate implements AdminManager {
 	private String accounts;
 	private JSONArray admins;
 
