@@ -6,13 +6,15 @@ import com.xwkj.ticket.bean.TicketBean;
 
 public interface TicketManager {
 	
-	public int getPayTimeOut();
+	int getPayTimeOut();
 	
-	public int getPaySMSTemplate();
+	int getPaySMSTemplate();
 	
-	public String getMailSubject();
+	String getMailSubject();
 
-	public String getPayMail();
+	String getPayMail();
+	
+	String getAdminTelephone(); 
 	
 	/**
 	 * 预定门票

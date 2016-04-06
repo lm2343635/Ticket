@@ -23,6 +23,7 @@ public class TicketManagerImpl extends ManagerTemplate implements TicketManager 
 	private int payTimeOut;
 	private int createSMSTemplate;
 	private int paySMSTemplate;
+	private String adminTelephone;
 	private String mailSubject;
 	private String createMail;
 	private String payMail;
@@ -65,6 +66,14 @@ public class TicketManagerImpl extends ManagerTemplate implements TicketManager 
 
 	public String getPayMail() {
 		return payMail;
+	}
+
+	public String getAdminTelephone() {
+		return adminTelephone;
+	}
+
+	public void setAdminTelephone(String adminTelephone) {
+		this.adminTelephone = adminTelephone;
 	}
 
 	@Override

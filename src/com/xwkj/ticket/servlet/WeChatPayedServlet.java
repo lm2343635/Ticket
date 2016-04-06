@@ -90,10 +90,11 @@ public class WeChatPayedServlet extends HttpServlet {
 			//准备发邮件和短信提醒用户已支付
 			String value="#tno#="+ticket.getTno()+"&#date#="+DateTool.formatDate(ticket.getDate(), DateTool.YEAR_MONTH_DATE_FORMAT_CN)
 				+"&#password#="+ticket.getPassword()+"&#sname#="+scenic.getSname()+"&#location#="+scenic.getLocation()+"&#count#="+ticket.getCount();
-			//发送短息通知用户支付成功
+			//发送短息通知用户和管理员支付成功
 			SMSService sms=(SMSService)context.getBean("SMSService");
 			TicketManager ticketManager=(TicketManager)context.getBean("ticketManager");
 			sms.send(ticket.getTelephone(), ticketManager.getPaySMSTemplate(), value);
+			sms.send(ticketManager.getAdminTelephone(), ticketManager.getPaySMSTemplate(), value);
 			//发邮件
 			if(ticket.getEmail()!=null&&!ticket.getEmail().equals("")) {
 				MailService mail=(MailService)context.getBean("MailService");

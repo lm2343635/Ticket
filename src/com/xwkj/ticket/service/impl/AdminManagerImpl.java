@@ -5,25 +5,29 @@ import javax.servlet.http.HttpSession;
 import com.xwkj.ticket.service.AdminManager;
 import com.xwkj.ticket.service.util.ManagerTemplate;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 public class AdminManagerImpl extends ManagerTemplate implements AdminManager
 {
-	private String username;
-	private String password;
+	private String accounts;
+	private JSONArray admins;
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	public void setAccounts(String accounts) {
+		this.accounts = accounts;
+		admins=JSONArray.fromObject(this.accounts);
 	}
 
 	@Override
 	public boolean login(String username, String password, HttpSession session) {
-		if(username.equals(this.username)&&password.equals(this.password)) {
-			session.setAttribute(ADMIN_FLAG, username);
-			return true;
-		}	
+		for(int i=0; i<admins.size(); i++) {
+			JSONObject admin=(JSONObject) admins.get(i);
+			if(username.equals(admin.getString("name"))&&password.equals(admin.getString("password"))) {
+				session.setAttribute(ADMIN_FLAG, username);
+				return true;
+			}	
+		}
+		
 		return false;
 	}
 
